@@ -1,6 +1,14 @@
 import "./App.css";
 import { useState } from "react";
 import Axios from "axios";
+import Button from "@mui/material/Button";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 function App() {
   const [companyName, setCompanyName] = useState("");
   const [country, setCountry] = useState("");
@@ -58,13 +66,39 @@ function App() {
             setMarketplace(event.target.value);
           }}
         ></input>
-        <button onClick={addCompany}>Add Stock</button>
+        <Button variant="contained" onClick={addCompany}>
+          Add Stock
+        </Button>
       </div>
       <div className="companies">
-        <button onClick={getCompanies}>Display Companies</button>
-        {companyList.map((val, key) => {
-          return <div>{val.name}</div>;
-        })}
+        <Button variant="contained" onClick={getCompanies}>
+          Display Companies
+        </Button>
+        {/* <button onClick={getCompanies}>Display Companies</button> */}
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Company Name</TableCell>
+                <TableCell>Country</TableCell>
+                <TableCell>Company Revenue (millions)</TableCell>
+                <TableCell>Marketplace</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {companyList.map((company) => {
+                return (
+                  <TableRow key={company.name}>
+                    <TableCell>{company.name}</TableCell>
+                    <TableCell>{company.country}</TableCell>
+                    <TableCell>{company.revenue}</TableCell>
+                    <TableCell>{company.marketplace}</TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </div>
     </div>
   );
