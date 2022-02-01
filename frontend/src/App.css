@@ -1,3 +1,45 @@
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.information input {
+  width: 200px;
+  height: 30px;
+  font-size: 20px;
+  padding-left: 10px;
+  margin: 5px;
+}
+
+.information button {
+  width: 200px;
+  height: 30px;
+  margin-top: 20px;
+}
+
+.information button:hover {
+  cursor: pointer;
+}
+
+.companies {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.companies button {
+  width: 200px;
+  height: 30px;
+  margin-top: 20px;
 }
