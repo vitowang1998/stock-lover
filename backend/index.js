@@ -1,6 +1,4 @@
-//CHANGE THE NAME
 const express = require("express");
-
 const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
@@ -9,6 +7,7 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json());
 
+// creates the connection between backend to the database
 const db = mysql.createConnection({
   user: "root",
   host: "localhost",
@@ -16,7 +15,7 @@ const db = mysql.createConnection({
   database: "stock_demo_schema",
 });
 
-// route for create
+// api for create
 app.post("/create", (req, res) => {
   const name = req.body.name;
   const country = req.body.country;
@@ -29,12 +28,13 @@ app.post("/create", (req, res) => {
       if (err) {
         console.log(err);
       } else {
-        res.send("Values inserted");
+        res.send("A new record is inserted to the database");
       }
     }
   );
 });
 
+// api for retrieve
 app.get("/companies", (req, res) => {
   db.query("SELECT * FROM companies", (err, result) => {
     if (err) {

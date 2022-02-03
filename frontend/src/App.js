@@ -18,7 +18,7 @@ function App() {
   const [companyList, setCompanyList] = useState([]);
 
   const addCompany = () => {
-    console.log(companyName);
+    console.log("Trying to add", companyName);
     Axios.post("http://localhost:3001/create", {
       name: companyName,
       country: country,
